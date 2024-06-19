@@ -11,7 +11,4 @@
 ![alt text](assets/README/image-1.png)
 
 
-
-
-
 ## [20240615](20240615-writeup.md)

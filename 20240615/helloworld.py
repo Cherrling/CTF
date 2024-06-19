@@ -1,7 +1,7 @@
 
 import requests
 
-url = "http://8.130.75.113:25430/?spell=viwo50"
+url = "http://train2024.hitctf.cn:26557/?spell=viwo50"
 
 payload = b"\xaa\xbb\xcc\xdd"
 headers = {
