@@ -1,0 +1,1 @@
+c = "fgpdocabrjlnemhkq" ci = "ergdgjboglfpgcbpbofmgafhfngpfoflfpfkgjgccndcfqfpgcgofofpdadadagr" diction = {} for i in c: diction[i] = ord(i) - ord('a') block = [] for i in range(0,len(ci),2): block.append(ci[i:i+2]) res = "" for temp in block: high = temp[0] low = temp[1] m = int(diction[high]) * 18 + diction[low] res += chr(m) 

@@ -1,0 +1,6 @@
+
+data_encoded.txt文件是被my_encode()函数加密后的数据，由以下请求产生：
+
+my_encode.php?key=密钥&data=flag信息
+
+为了避免源码泄漏，PHP使用了某种加密保护的扩展模块。
