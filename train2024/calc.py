@@ -1,34 +1,47 @@
 import requests
 import re
 
-url = "http://train2024.hitctf.cn:26387/"
+from selenium import webdriver
 
-def extract_span_content(response_text):
-    # Use regex to extract the content inside the span tag
-    match = re.search(r'<span id="msg" class="ui purple text">(.+?)<\/span>', response_text)
-    if match:
-        content = match.group(1)
-        return content
-    return "No matching content found"
+from selenium.webdriver import ActionChains
+
+from selenium.webdriver.common.by import By 
+
+from selenium.webdriver.edge.service import Service
+
+from selenium.webdriver.common.keys import Keys
+
+url = "http://train2024.hitctf.cn:26876/"
 
 def main():
-    payload={}
-    headers = {
-    'User-Agent': 'Apifox/1.0.0 (https://apifox.com)',
-    'Accept': '*/*',
-    'Host': 'train2024.hitctf.cn:26387',
-    'Connection': 'keep-alive'
-    }
+    ser = Service()
+    ser.path = r'C:\\Code\\CTF\\train2024\\chromedriver-win64\\chromedriver.exe'
+    driver = webdriver.Chrome(service=ser)
+    driver.get(url)
+    # Find the element by id
+    while True:
 
-    response = requests.request("GET", url, headers=headers, data=payload)
+        msg = driver.find_element(By.ID, "msg")
+        # Extract the content of the element
+        print(msg.text)
 
-    print(response.text)
-    if response.status_code == 200:
-        response_text = response.text
-        content = extract_span_content(response_text)
-        print(f"Extracted span content: {content}")
-    else:
-        print(f"Request failed with status code {response.status_code}")
+        input=driver.find_element(By.ID, "gameinput")
+        if msg.text == "Are you ready?":
+            input.send_keys("ready")
+            # 发送回车
+            input.send_keys(Keys.RETURN)
+        else:
+            # 提取算式<span id="msg" class="ui purple text">0 * 1 (Problem 1/100)</span>
+            calc=msg.text.split("(")[0]
+            # 计算结果
+            result=eval(calc)
+            input.send_keys(result)
+            input.send_keys(Keys.RETURN)
+
+
+
+
+
 
 if __name__ == "__main__":
     main()
