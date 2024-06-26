@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="hero min-h-[calc(100vh-72px)] bg-base-200 -mt-20">
+    <div class="hero-content flex flex-col font-bold">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024" class="w-32 h-32 text-success" fill="currentColor" ><path d="M512 74.666667C270.933333 74.666667 74.666667 270.933333 74.666667 512S270.933333 949.333333 512 949.333333 949.333333 753.066667 949.333333 512 753.066667 74.666667 512 74.666667z m238.933333 349.866666l-2.133333 2.133334-277.333333 277.333333c-10.666667 10.666667-29.866667 12.8-42.666667 2.133333L426.666667 704l-149.333334-149.333333c-12.8-12.8-12.8-32 0-44.8 10.666667-10.666667 29.866667-12.8 42.666667-2.133334l2.133333 2.133334 125.866667 125.866666 253.866667-253.866666c10.666667-10.666667 29.866667-12.8 42.666666-2.133334l2.133334 2.133334c12.8 12.8 12.8 32 4.266666 42.666666z"></path></svg>
+        <h1 class="text-5xl">提交成功</h1>
+        <p class="mt-20">给个五星好评吧？</p>
+        <div class="rating rating-lg">
+            <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+            <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+            <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" checked />
+            <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+            <input type="radio" name="rating-8" class="mask mask-star-2 bg-orange-400" />
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

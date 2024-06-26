@@ -1,0 +1,32 @@
+<div class="navbar bg-base-200 py-3 px-8 mb-20">
+    <div class="flex-1">
+        <a href="/" class="btn btn-ghost text-2xl">
+            <img src="/static/Strawberry.png" alt="草莓云收件箱" class="w-8 h-8" />
+            草莓云收件箱
+        </a>
+    </div>
+    <div class="flex-none">
+        {% if g.is_guest %}
+        <p class="pr-3 text-sm opacity-60">当前身份为<strong>游客</strong></p>
+        <a href="/login" class="btn btn-ghost underline">登陆</a>
+        {% else %}
+        <p class="pr-3">你好，<strong>{{g.info['username']}}</strong></p>
+        <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                <div class="w-14 rounded-full">
+                    <img alt="Tailwind CSS Navbar component" src="{{g.info['avatar']}}" />
+                </div>
+            </div>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32">
+                <li>
+                    <a class="justify-between">
+                        个人信息
+                    </a>
+                </li>
+                <li><a>设置</a></li>
+                <li><a href="/logout">注销</a></li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>

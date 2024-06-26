@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /download
+Disallow: /login
+Disallow: /logout
+Disallow: /submit
+Disallow: /www.zip

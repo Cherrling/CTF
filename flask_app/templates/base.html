@@ -1,0 +1,16 @@
+<!DOCUTYPE html data-theme="light">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/Strawberry.png" type="image/png">
+    <title>{% block title %}草莓云收件箱{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body data-theme="cupcake" class="relative min-h-[100vh]">
+    {% include "header.html" %}
+    {% block content %}{% endblock %}
+    {% include "footer.html" %}
+</body>

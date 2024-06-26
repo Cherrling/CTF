@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-[1024px] mx-auto">
+    <h1 class="text-4xl font-bold pb-10">
+        收件箱统计
+    </h1>
+
+    <div class="flex gap-6">
+        {# 左侧栏 #}
+        <div class="flex-none stats stats-vertical shadow-md outline outline-1 outline-base-200">
+    
+            <div class="stat">
+                <div class="stat-figure text-secondary">
+                <div class="avatar online">
+                    <div class="w-16 rounded-full">
+                    <img src="/static/avatar.webp" />
+                    </div>
+                </div>
+                </div>
+                <div class="stat-title">收集者</div>
+                <div class="stat-value text-3xl">墨茶Official</div>
+                <div class="stat-desc text-secondary">「我是茶叶成精」</div>
+            </div>
+            
+            <div class="stat">
+                <div class="stat-figure text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <div class="stat-title">通关人数</div>
+                <div class="stat-value text-primary">114</div>
+                <div class="stat-desc">1919% more than last month</div>
+            </div>
+            
+            <div class="stat">
+                <div class="stat-figure text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                </div>
+                <div class="stat-value text-secondary">514</div>
+                <div class="stat-title">已提交</div>
+                <div class="stat-desc">810% more than last month</div>
+            </div>
+        
+        </div>
+
+        {# 右侧栏 #}
+        <div class="flex-1 card bg-base-100 shadow-md outline outline-1 outline-base-200">
+            <div class="card-body">
+                <h2 class="card-title">问卷管理（已锁定）</h2>
+
+                {# flag #}
+                <div class="stats bg-neutral-content/30">
+                    <div class="stat">
+                        <div class="stat-title">FLAG 1</div>
+                        <div class="stat-value text-accent text-2xl">{{flag1}}</div>
+                    </div>
+                </div>
+
+                {# 问卷描述 #}
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text font-bold">问卷描述</span>
+                    </div>
+                    <textarea class="textarea textarea-bordered" disabled>把你的身份证正反面扫描件、学生证扫描件、户口本扫描件交上来，我就给你 flag。</textarea>
+                </label>
+
+                {# 姓名 / 学号 #}
+                <div class="label-text font-bold">收集条目</div>
+                <div class="flex justify-start gap-4">
+                    <select class="select select-bordered w-full max-w-xs" disabled>
+                        <option>姓名</option>
+                    </select>
+                    <select class="select select-bordered w-full max-w-xs" disabled>
+                        <option>学号</option>
+                    </select>
+                    <select class="select select-bordered w-full max-w-xs" disabled>
+                        <option>附件（仅 zip 格式）</option>
+                    </select>
+                </div>
+
+                <div class="card-actions justify-end mt-2">
+                    <button class="btn btn-primary" disabled>更新问卷</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# 提交记录 #}
+    <h3 class="text-2xl font-bold pt-10 pb-4">提交记录</h3>
+    <div class="overflow-x-auto rounded-2xl shadow-md outline outline-1 outline-base-200">
+        <table class="table-lg w-full table-zebra *:text-center">
+            <thead class="border-b-2 border-base-300">
+                <tr>
+                    <th></th>
+                    <th>姓名</th>
+                    <th>学号</th>
+                    <th>附件</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# 提交记录表项 #}
+                {% for entry in collected %}
+                <tr class="hover">
+                    <th>{{loop.index}}</th>
+                    <td>{{entry[0]}}</td>
+                    <td>{{entry[1]}}</td>
+                    <td><a href="/download?idx={{loop.index}}" _target="_blank" class="link link-primary">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-auto" viewBox="0 0 1024 1024" fill="currentColor"><path d="M170.666667 768m42.666666 0l597.333334 0q42.666667 0 42.666666 42.666667l0 0q0 42.666667-42.666666 42.666666l-597.333334 0q-42.666667 0-42.666666-42.666666l0 0q0-42.666667 42.666666-42.666667Z" p-id="12820"></path><path d="M170.666667 853.333333m0-42.666666l0-85.333334q0-42.666667 42.666666-42.666666l0 0q42.666667 0 42.666667 42.666666l0 85.333334q0 42.666667-42.666667 42.666666l0 0q-42.666667 0-42.666666-42.666666Z" p-id="12821"></path><path d="M768 853.333333m0-42.666666l0-85.333334q0-42.666667 42.666667-42.666666l0 0q42.666667 0 42.666666 42.666666l0 85.333334q0 42.666667-42.666666 42.666666l0 0q-42.666667 0-42.666667-42.666666Z" p-id="12822"></path><path d="M512 640a42.666667 42.666667 0 0 1-24.746667-7.68l-170.666666-120.32a42.666667 42.666667 0 0 1-10.24-59.306667 42.666667 42.666667 0 0 1 59.733333-10.24L512 544.426667l145.066667-109.226667a42.666667 42.666667 0 0 1 51.2 68.266667l-170.666667 128a42.666667 42.666667 0 0 1-25.6 8.533333z" p-id="12823"></path><path d="M512 554.666667a42.666667 42.666667 0 0 1-42.666667-42.666667V170.666667a42.666667 42.666667 0 0 1 85.333334 0v341.333333a42.666667 42.666667 0 0 1-42.666667 42.666667z"></path></svg>
+                    </a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="h-24"></div>
+
+</div>
+
+{% endblock %}
