@@ -1,0 +1,35 @@
+def decode_e(e):
+    if e > 1:
+        mul = 1
+        for i in trange(1, e):
+            mul *= i
+        if e - mul % e - 1 == 0:
+            mulmod = mul % e - e
+        else:
+            mulmod = mul % e
+        return mulmod + decode_e(e - 1)
+    else:
+        return 0
+
+
+威尔逊定理，这里的只要是素数就返回-1，而不是素数的就是0
+得到的e就是 703440151 下的所有素数 的 表示的-1相加的绝对值
+利用埃拉托斯特尼筛法 寻找
+from math import sqrt
+from tqdm import *
+def sieve_of_eratosthenes(n: int):
+    is_prime = [True for _ in range(n + 1)]
+    for i in trange(2, int(sqrt(n)) + 1):
+        if is_prime[i]:
+            for j in range(i * i, n + 1, i):
+                is_prime[j] = False
+    return len([i for i in range(2, n + 1) if is_prime[i]])
+print(sieve_of_eratosthenes(703440151))
+得到的数字需减二
+然后根据p和q的关系，就能解出
+
+e=
+p1=gmpy2.iroot(n,2)[0]
+p=next_prime(p1)
+q=n//p
+
