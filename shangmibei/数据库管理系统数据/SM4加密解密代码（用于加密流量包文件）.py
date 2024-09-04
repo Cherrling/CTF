@@ -69,9 +69,3 @@ print("key hex:", BytesToHexString(key_bytes))
 # # 解密密文并将明文写入到plainText.pcapng(含flag4)
 # with open('plainText.pcapng', 'wb') as f4:
 #     f4.write(plain2_bytes)
-
-
-
-
-
-
