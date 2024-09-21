@@ -1,0 +1,58 @@
+{include file="index/header" /}
+<link href="{$domain}public/common/confirm/jquery-confirm.css" type="text/css" rel="stylesheet">
+<div class="row bg-info text-center">
+    <h4>{:lang('Slide grouping')}</h4>
+</div><br>
+<div class="container-fluid" style="min-height: 800px;">
+    <a class="btn btn-default pull-right" href="{:Url('admin/Index/newslidegroup')}">{:lang('New slide grouping')}</a>
+    <form class="form-inline" method="post" action="">
+        <div>
+            <p>
+                <input type="hidden" name="paixu" value="paixu">
+                <input type="hidden" name="verification" value="{$verification}">
+                <button type="submit" id="pshanchu" class="btn btn-primary btn-sm">{:lang('Sort')}<span class="hidden">&nbsp;<img src="{$domain}public/common/images/zhixing_bai.gif" width="14" height="14"></span></button>
+            </p>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="width: 80px;">{:lang('Sort')}</th>
+                        <th>{:lang('Group name')}</th>
+                        <th>{:lang('Slide width')}</th>
+                        <th>{:lang('Slide height')}</th>
+                        <th>{:lang('Operation')}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="data" id="vo"}
+                    <tr>
+                        <td>
+                            <input type="text" value="{$vo.listorder}" name="{$vo.name}" class="form-control input-sm" maxlength="8" style="width: 80px;">
+                        </td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.wid}</td>
+                        <td>{$vo.hei}</td>
+                        <td>
+                            <input class="hidden" value="{$vo.name}">
+                            <a href="{:Url('modifyslidegroup')}?c={$vo.name}">{:lang('Edit')}</a>
+                            &nbsp;|&nbsp;
+                            <a class="twitter" data-title="{:lang('Confirm to delete?')}" href="#!">{:lang('Delete')}</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div><br>
+<div class="hidden" id="quedingshanchu">{:lang('Confirm to delete?')}</div>
+<div class="hidden" id="bukehuifu">{:lang('Are you sure you want to delete the slide group? It cannot be recovered after deletion!')}</div>
+<div class="hidden" id="jixu">{:lang('Continue')}</div>
+<div class="hidden" id="quxiao">{:lang('Cancel')}</div>
+<div class="hidden" id="verification">{$verification}</div>
+<script src="{$domain}public/common/confirm/jquery-confirm.js"></script>
+<script src="{$domain}public/common/js/slidegroup.js"></script>
+{include file="index/footer" /}

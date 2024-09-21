@@ -1,0 +1,96 @@
+{include file="index/header" /}
+<link href="{$domain}public/common/confirm/jquery-confirm.css" type="text/css" rel="stylesheet">
+<div class="row bg-info text-center">
+    <h4>{:lang('Database backup')}</h4>
+</div><br>
+{notempty name="prompt"}
+<div class="text-center text-danger">{$prompt}</div>
+{/notempty}
+<div class="container-fluid" style="min-height: 800px;">
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post" action="">
+                <div>
+                    <input type="hidden" name="dbbackup" value="dbbackup">
+                    <input type="hidden" name="verification" value="{$verification}">
+                    <button type="submit" class="btn btn-default">{:lang('Create a new backup')}<span class="hidden">&nbsp;<img src="{$domain}public/common/images/zhixing.gif" width="16" height="16"></span></button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="pull-right"><a data-toggle="collapse" href="#collapseExample">
+                {:lang('Upload a local backup file and restore')}
+            </a></div>
+            <div class="clearfix"></div>
+            <div class="collapse" id="collapseExample">
+                <div>
+                    <form method="post" id="upreform" enctype="multipart/form-data" action="{:Url('admin/Index/uploadrestore')}">
+                        <div class="form-group">
+                            <label>{:lang('Upload backup file')}</label>
+                            <input type="file" id="bkfile" name="file">
+                        </div>
+                        <input type="hidden" name="uploadrestore" value="uploadrestore">
+                        <input type="hidden" name="verification" value="{$verification}">
+                        <button type="button" id="submitupreform" class="btn btn-default">{:lang('Upload and restore')}</button>
+                        <p class="help-block">{:lang('Upload the backup file downloaded from this page')}</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-12">
+            {notempty name="cdbbackup"}
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>{:lang('Backup file name')}</th>
+                        <th>{:lang('Backup date')}</th>
+                        <th>{:lang('Operation')}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="cdbbackup" id="vo"}
+                    <tr>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.date}</td>
+                        <td>
+                            <input type="hidden" value="{$vo.path}">
+                            <a class="shanchu" data-title="{:lang('Confirm to delete?')}" href="#!">{:lang('Delete')}</a>
+                            &nbsp;|&nbsp;
+                            <a class="huanyuan" data-title="{:lang('Are you sure you want to restore the database?')}" href="#!">{:lang('Restore database')}</a>
+                            &nbsp;|&nbsp;
+                            <a href="{$vo.down}" download="{$vo.name}">{:lang('Download to local')}</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+            {/notempty}
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-example-modal-sm" id="dbbackupModal" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="padding:20px;">
+            <span><img src="{$domain}public/common/images/zhixing.gif" width="16" height="16">&nbsp;</span> {:lang('Restoring the database, please do not do anything during the restore, please wait...')}
+        </div>
+    </div>
+</div>
+<div class="hidden" id="jixu">{:lang('Continue')}</div>
+<div class="hidden" id="quxiao">{:lang('Cancel')}</div>
+<div class="hidden" id="chucuo">{:lang('Error')}</div>
+<div class="hidden" id="quedingshanchu">{:lang('Confirm to delete?')}</div>
+<div class="hidden" id="fangruhuishouzhan">{:lang('After deleting the backup file, the file will disappear')}</div>
+<div class="hidden" id="quedinghuanyuan">{:lang('Are you sure you want to restore the database?')}</div>
+<div class="hidden" id="huanyuanshuoming">{:lang('After restoring the database, the new data will be lost. Please make sure that the latest backup is restored.')}</div>
+<div class="hidden" id="redbbackupok">{:lang('The database has been successfully restored')}</div>
+<div class="hidden" id="quedingshangchuan">{:lang('Are you sure you want to upload and restore?')}</div>
+<div class="hidden" id="shangchuanshuoming">{:lang('Do not perform any operations during the restore, please be patient and wait for the database restore to end')}</div>
+<div class="hidden" id="notselected">{:lang('Backup file not selected')}</div>
+<div class="hidden" id="verification">{$verification}</div>
+<script src="{$domain}public/common/confirm/jquery-confirm.js"></script>
+<script src="{$domain}public/common/js/dbbackup.js"></script>
+{include file="index/footer" /}

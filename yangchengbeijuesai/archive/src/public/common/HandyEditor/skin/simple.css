@@ -1,0 +1,49 @@
+.HandyEditor{
+    border : solid 1px #e9ebf1;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.HandyEditor_menu{
+    border : none;
+    padding: 0px 5px;
+    background-color: #f3f4f6;
+}
+.HandyEditor_menu_item,.HandyEditor_menu_item:visited{
+    color: #909296;
+    background-color: #f3f4f6;
+    padding: 5px 5px;
+    margin: 10px 5px;
+    font-size: 16px;
+    -webkit-text-shadow:none;
+    -moz-text-shadow:none;
+    -o-text-shadow:none;
+    text-shadow:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    border-bottom: none;
+}
+.HandyEditor_menu_item:hover{
+    color: #fff;
+    background-color: #17a2b8;
+}
+.HandyEditor_menu_item:active{
+    background-color: #17a2b8;
+}
+.HandyEditor_menu_item_valid{
+    background-color: #17a2b8;
+    color: #fff;
+}
+.HandyEditor_menu_item_invalid,
+.HandyEditor_menu_item_invalid:hover{
+    color: #e9edee;
+    background-color: #fefefe;
+}
+.HandyEditor_menu_gap{
+    border-color: #d8e2e5;
+}
+.HandyEditor_editor{
+    background-color: #fff;
+    font-size: 18px;
+}

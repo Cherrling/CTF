@@ -1,0 +1,1 @@
+ALTER TABLE `catfish_comments` ADD `topid` BIGINT( 20 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `parent_id` , ADD INDEX ( `topid` ) ;

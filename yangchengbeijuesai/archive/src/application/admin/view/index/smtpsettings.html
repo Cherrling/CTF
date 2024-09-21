@@ -1,0 +1,52 @@
+{include file="index/header" /}
+<div class="row bg-info text-center">
+    <h4>{:lang('SMTP settings')}</h4>
+</div><br>
+<div class="container-fluid" style="min-height: 800px;">
+    <div class="row">
+        <form method="post" action="">
+            <h4>{:lang('With')}&nbsp;<b><span class="text-danger">*</span></b>&nbsp;{:lang('are required')}</h4>
+            <h5 class="text-muted">{:lang('After SMTP is set correctly, it can be used to send e-mails, for example, to retrieve the password via e-mail.')}</h5>
+            <div class="form-group">
+                <label>{:lang('SMTP server address')}：&nbsp;<b><span class="text-danger">*</span></b></label>
+                <input type="text" class="form-control" name="host" value="{$data.host}" placeholder="{:lang('SMTP server address')}">
+            </div>
+            <div class="form-group">
+                <label>{:lang('The port number')}：&nbsp;<b><span class="text-danger">*</span></b></label>
+                <input type="text" class="form-control" name="port" value="{$data.port}" placeholder="{:lang('The port number')}">
+            </div>
+            <div class="form-group">
+                <label>{:lang('Encryption')}：&nbsp;<b><span class="text-danger">*</span></b></label>
+                <select class="form-control" name="secure">
+                    <option value="tls"{if condition="$data.secure eq 'tls'"} selected{/if}>tls</option>
+                    <option value="ssl"{if condition="$data.secure eq 'ssl'"} selected{/if}>ssl</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{:lang('Mailbox user')}：&nbsp;<b><span class="text-danger">*</span></b></label>
+                <input type="text" class="form-control" name="user" value="{$data.user}" placeholder="{:lang('Mailbox user')}">
+            </div>
+            <div class="form-group">
+                <label>{:lang('Password')}：&nbsp;<b><span class="text-danger">*</span></b></label>
+                <input type="password" class="form-control" name="password" value="{$data.password}" placeholder="{:lang('Password')}">
+            </div>
+            <div class="form-group">
+                <label>{:lang('Whether to enable SMTP authentication')}：</label>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="auth"{if condition="$data.auth eq 1"} checked{/if}> {:lang('Enable SMTP authentication')}
+                    </label>
+                </div>
+            </div>
+            {if condition="$ceshi == 1"}
+            <button type="button" id="ceshi" class="btn btn-default btn-sm">{:lang('Send a test email')}<span class="hidden">&nbsp;<img src="{$domain}public/common/images/zhixing.gif" width="16" height="16"></span></button>
+            {/if}
+            <div class="text-center">
+                <input type="hidden" id="verification" name="verification" value="{$verification}">
+                <button type="submit" class="btn btn-default">{:lang('Save')}<span class="hidden">&nbsp;<img src="{$domain}public/common/images/zhixing.gif" width="16" height="16"></span></button>
+            </div>
+        </form>
+    </div>
+</div><br>
+<script src="{$domain}public/common/js/smtpsettings.js"></script>
+{include file="index/footer" /}
